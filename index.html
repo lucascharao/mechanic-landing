@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#0B1A38" />
+<meta name="theme-color" content="#14274E" />
 <title>Tiago Charão — Mobile Mechanic · Home Service</title>
 <meta name="description" content="Mobile mechanic. We come to you. Oil change, brakes, diagnostics, suspension, alternator, starter, radiator. Call, text or WhatsApp for a fast quote." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,135 +26,18 @@
     --wa-shadow: 0 22px 40px -18px rgba(37,211,102,.5);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;padding:0;background:var(--navy-3);color:var(--navy);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
-  body{position:relative}
-
-  /* ========================================================== */
-  /* HERO SCRUB (cinematic scroll-driven intro)                 */
-  /* ========================================================== */
-  .hero-scrub{
-    position:relative;width:100%;height:320vh;background:var(--navy-3);color:#fff;
-    overflow:clip;
-  }
-  .hero-scrub .sticky{
-    position:sticky;top:0;height:100vh;height:100svh;width:100%;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-    overflow:hidden;
-  }
-  /* Layered background */
-  .hs-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 30%, #1E3766 0%, #0B1A38 70%)}
-  .hs-vig{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.7) 100%)}
-  .hs-grid{
-    position:absolute;inset:0;z-index:1;opacity:.18;
-    background-image:
-      linear-gradient(rgba(255,107,26,.18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,107,26,.18) 1px, transparent 1px);
-    background-size:38px 38px;
-    mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%);
-  }
-  /* Scan beam during scrub */
-  .hs-beam{
-    position:absolute;left:0;right:0;height:2px;z-index:2;pointer-events:none;
-    background:linear-gradient(90deg, transparent, var(--orange), transparent);
-    box-shadow:0 0 14px var(--orange), 0 0 32px var(--orange);
-    top:50%;opacity:0;
-  }
-
-  .hs-title{
-    font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;
-    font-size:clamp(56px, 16vw, 180px);line-height:.85;letter-spacing:-.03em;color:#fff;
-    text-shadow:0 6px 30px rgba(0,0,0,.4);
-    margin:0;z-index:5;position:relative;
-    will-change:transform,opacity;
-  }
-  .hs-title .accent{color:var(--orange)}
-
-  .hs-card{
-    position:relative;z-index:4;
-    width:min(86vw, 420px);aspect-ratio:16/10;
-    border-radius:18px;overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.08) inset;
-    transform-origin:50% 50%;will-change:transform;
-    background:#0a0a0a;
-  }
-  /* Two stacked image layers — outer (car body) crossfades into inner (engine/parts) */
-  .hs-layer{
-    position:absolute;inset:0;background-size:cover;background-position:center;
-    will-change:opacity, transform, filter;
-  }
-  .hs-outer{opacity:1;z-index:1}
-  .hs-inner{opacity:0;z-index:2;filter:saturate(.85) contrast(1.05)}
-  /* X-ray overlay (grid + tint + scanlines) — appears during the reveal */
-  .hs-xray{
-    position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;
-    background:
-      linear-gradient(180deg, rgba(255,107,26,.0) 0%, rgba(255,107,26,.18) 50%, rgba(255,107,26,.0) 100%),
-      repeating-linear-gradient(0deg, rgba(255,107,26,.18) 0 1px, transparent 1px 4px),
-      repeating-linear-gradient(90deg, rgba(255,107,26,.10) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(0deg, rgba(255,107,26,.10) 0 1px, transparent 1px 28px);
-    mix-blend-mode:screen;
-  }
-  /* Crosshair when fully in X-ray mode */
-  .hs-cross{
-    position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;
-  }
-  .hs-cross::before, .hs-cross::after{
-    content:"";position:absolute;background:var(--orange);opacity:.65;
-  }
-  .hs-cross::before{left:50%;top:6%;bottom:6%;width:1px;transform:translateX(-50%)}
-  .hs-cross::after{top:50%;left:6%;right:6%;height:1px;transform:translateY(-50%)}
-
-  .hs-card .inner-shadow{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 120px rgba(0,0,0,.55);z-index:6}
-
-  .hs-card .label{
-    position:absolute;left:14px;bottom:12px;z-index:7;
-    background:rgba(255,107,26,.95);color:#fff;font-weight:800;font-size:11px;letter-spacing:.18em;
-    padding:6px 10px;border-radius:6px;text-transform:uppercase;
-    transition:background .3s ease, transform .3s ease;
-  }
-  .hs-card .scanline{
-    position:absolute;left:0;right:0;height:2px;background:rgba(255,107,26,.95);
-    box-shadow:0 0 14px var(--orange), 0 0 28px var(--orange);
-    top:0;z-index:5;opacity:0;
-  }
-
-  .hs-skip{
-    position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:10;
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
-    color:#fff;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.15);
-    text-decoration:none;animation:bob 2.4s ease-in-out infinite;
-  }
-  .hs-skip svg{width:14px;height:14px}
-  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(4px)}}
-
-  /* ========================================================== */
-  /* MENU SECTION (logo + CTAs + services)                       */
-  /* ========================================================== */
-  .menu-section{
-    position:relative;width:100%;min-height:100vh;background:var(--bg);color:var(--navy);
-    padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);
-    display:flex;flex-direction:column;align-items:center;
-    overflow:hidden;
-  }
-  /* Top transition curve */
-  .menu-section::before{
-    content:"";position:absolute;top:-1px;left:0;right:0;height:60px;
-    background:var(--bg);
-    clip-path:ellipse(80% 100% at 50% 100%);
-    z-index:1;
-  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--navy);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
+  body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);position:relative}
 
   /* Background: subtle gears + grid */
-  .menu-bg{
-    position:absolute;inset:0;z-index:0;overflow:hidden;
+  .bg{
+    position:fixed;inset:0;z-index:0;overflow:hidden;
     background:
       radial-gradient(900px 600px at 50% -10%, #e9eef7 0%, transparent 60%),
       radial-gradient(800px 500px at 100% 110%, #ffe7d6 0%, transparent 55%),
       linear-gradient(180deg,#f4f6f9 0%, #eaeef5 100%);
   }
-  .menu-bg::before{
+  .bg::before{
     content:"";position:absolute;inset:0;
     background-image:
       linear-gradient(rgba(20,39,78,.06) 1px, transparent 1px),
@@ -252,225 +135,78 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;transition:none!important}
-    .hero-scrub{height:100vh}
-    .hs-card{transform:scale(1)!important}
-    .hs-title{opacity:1!important}
   }
 </style>
 </head>
 <body>
 
-<!-- ====================== HERO SCRUB ====================== -->
-<section class="hero-scrub" id="hero">
-  <div class="sticky">
-    <div class="hs-bg"></div>
-    <div class="hs-grid"></div>
-    <div class="hs-vig"></div>
-    <div class="hs-beam" id="beam"></div>
+<div class="bg" aria-hidden="true">
+  <svg class="gear g1" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+  <svg class="gear g2 r" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+  <svg class="gear g3" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+  <svg class="gear g4 r" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+</div>
 
-    <h2 class="hs-title" id="titleTop">
-      <span>TIAGO</span>
-    </h2>
+<main class="stage">
 
-    <div class="hs-card" id="card">
-      <!-- Outer layer: full car -->
-      <div class="hs-layer hs-outer" id="layerOuter"
-           style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&q=80')"></div>
-      <!-- Inner layer: what's under the hood (engine bay / parts) -->
-      <div class="hs-layer hs-inner" id="layerInner"
-           style="background-image:url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1400&q=80')"></div>
-      <!-- X-ray overlay (orange grid + scanlines) -->
-      <div class="hs-xray" id="xray"></div>
-      <div class="hs-cross" id="cross"></div>
-      <div class="scanline" id="scanline"></div>
-      <div class="inner-shadow"></div>
-      <div class="label" id="cardLabel">The Car</div>
+  <header class="header">
+    <img class="logo" src="assets/logo.png" alt="Tiago Charão Mobile Mechanic" />
+    <div class="role">MOBILE MECHANIC</div>
+    <div class="sub">HOME SERVICE</div>
+    <div class="tag">
+      <span class="pin"></span>
+      We come to you — fast, fair, honest
     </div>
+  </header>
 
-    <h2 class="hs-title" id="titleBottom">
-      <span class="accent">CHARÃO</span>
-    </h2>
+  <div class="cta-wrap">
 
-    <a class="hs-skip" href="#menu" aria-label="Skip intro">
-      <span>Scroll</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    <a class="btn btn-wa" href="https://wa.me/14707733128?text=Hi%20Tiago!%20I'd%20like%20a%20quote%20for%20mobile%20mechanic%20service." target="_blank" rel="noopener">
+      <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+      <span class="stack">
+        <span class="s">Fastest reply</span>
+        <span class="b">Chat on WhatsApp</span>
+      </span>
     </a>
+
+    <a class="btn btn-sms" href="sms:+14707733128?&body=Hi%20Tiago!%20I'd%20like%20a%20quote%20for%20mobile%20mechanic%20service.">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span class="stack">
+        <span class="s">Text for a</span>
+        <span class="b">FREE Quote</span>
+      </span>
+    </a>
+
+    <a class="btn btn-call" href="tel:+14707733128" style="position:relative">
+      <span class="pulse" aria-hidden="true"></span>
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call (470)&nbsp;773-3128</span>
+    </a>
+
   </div>
-</section>
 
-<!-- ====================== MENU ====================== -->
-<section class="menu-section" id="menu">
-
-  <div class="menu-bg" aria-hidden="true">
-    <svg class="gear g1" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
-    <svg class="gear g2 r" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
-    <svg class="gear g3" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
-    <svg class="gear g4 r" viewBox="0 0 24 24" fill="currentColor"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+  <div class="services" aria-label="Services">
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h6l2 3h3v6a4 4 0 0 1-4 4h-3l-2 2H6V8h1z"/><path d="M11 16c1 3 0 5-1 5"/></svg></div><div class="lbl">Oil Change</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div><div class="lbl">Brakes</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-5 3 10 2-7 2 4 2-2h4"/></svg></div><div class="lbl">Diagnostics</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3"/><path d="M9 6h6M9 9h6M9 12h6M9 15h6M9 18h6"/></svg></div><div class="lbl">Suspension</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="10" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M9 4v3M15 4v3M9 17v3M15 17v3"/></svg></div><div class="lbl">Alternator</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h8v8H8z"/><path d="M10 5v3M14 5v3M10 16v3M14 16v3M4 10h4M16 10h4M4 14h4M16 14h4"/></svg></div><div class="lbl">Starter</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="1"/><line x1="8" y1="5" x2="8" y2="19"/><line x1="11" y1="5" x2="11" y2="19"/><line x1="14" y1="5" x2="14" y2="19"/><line x1="17" y1="5" x2="17" y2="19"/></svg></div><div class="lbl">Radiator</div></div>
+    <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 h18"/><path d="M5 12 a7 7 0 0 1 14 0"/><path d="M9 12 v4"/><path d="M15 12 v4"/></svg></div><div class="lbl">& more</div></div>
   </div>
 
-  <main class="stage">
+  <div class="trust">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Mobile</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Honest pricing</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 7-day a week</span>
+  </div>
 
-    <header class="header">
-      <img class="logo" src="assets/logo.png" alt="Tiago Charão Mobile Mechanic" />
-      <div class="role">MOBILE MECHANIC</div>
-      <div class="sub">HOME SERVICE</div>
-      <div class="tag">
-        <span class="pin"></span>
-        We come to you — fast, fair, honest
-      </div>
-    </header>
+  <div class="foot">© Tiago Charão Mobile Mechanic · Tap to book your service</div>
 
-    <div class="cta-wrap">
+</main>
 
-      <a class="btn btn-wa" href="https://wa.me/14707733128?text=Hi%20Tiago!%20I'd%20like%20a%20quote%20for%20mobile%20mechanic%20service." target="_blank" rel="noopener">
-        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
-        <span class="stack">
-          <span class="s">Fastest reply</span>
-          <span class="b">Chat on WhatsApp</span>
-        </span>
-      </a>
-
-      <a class="btn btn-sms" href="sms:+14707733128?&body=Hi%20Tiago!%20I'd%20like%20a%20quote%20for%20mobile%20mechanic%20service.">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        <span class="stack">
-          <span class="s">Text for a</span>
-          <span class="b">FREE Quote</span>
-        </span>
-      </a>
-
-      <a class="btn btn-call" href="tel:+14707733128" style="position:relative">
-        <span class="pulse" aria-hidden="true"></span>
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-        <span>Call (470)&nbsp;773-3128</span>
-      </a>
-
-    </div>
-
-    <div class="services" aria-label="Services">
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h6l2 3h3v6a4 4 0 0 1-4 4h-3l-2 2H6V8h1z"/><path d="M11 16c1 3 0 5-1 5"/></svg></div><div class="lbl">Oil Change</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div><div class="lbl">Brakes</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-5 3 10 2-7 2 4 2-2h4"/></svg></div><div class="lbl">Diagnostics</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3"/><path d="M9 6h6M9 9h6M9 12h6M9 15h6M9 18h6"/></svg></div><div class="lbl">Suspension</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="10" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M9 4v3M15 4v3M9 17v3M15 17v3"/></svg></div><div class="lbl">Alternator</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h8v8H8z"/><path d="M10 5v3M14 5v3M10 16v3M14 16v3M4 10h4M16 10h4M4 14h4M16 14h4"/></svg></div><div class="lbl">Starter</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="1"/><line x1="8" y1="5" x2="8" y2="19"/><line x1="11" y1="5" x2="11" y2="19"/><line x1="14" y1="5" x2="14" y2="19"/><line x1="17" y1="5" x2="17" y2="19"/></svg></div><div class="lbl">Radiator</div></div>
-      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 h18"/><path d="M5 12 a7 7 0 0 1 14 0"/><path d="M9 12 v4"/><path d="M15 12 v4"/></svg></div><div class="lbl">& more</div></div>
-    </div>
-
-    <div class="trust">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Mobile</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Honest pricing</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 7-day a week</span>
-    </div>
-
-    <div class="foot">© Tiago Charão Mobile Mechanic · Tap to book your service</div>
-
-  </main>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
-(function(){
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const hero = document.getElementById('hero');
-  const card = document.getElementById('card');
-  const titleTop = document.getElementById('titleTop');
-  const titleBottom = document.getElementById('titleBottom');
-  const beam = document.getElementById('beam');
-  const cardLabel = document.getElementById('cardLabel');
-  const layerOuter = document.getElementById('layerOuter');
-  const layerInner = document.getElementById('layerInner');
-  const xray = document.getElementById('xray');
-  const cross = document.getElementById('cross');
-  const scanline = document.getElementById('scanline');
-
-  // Entry timeline
-  const intro = gsap.timeline({delay:.15});
-  intro.from(titleTop, {y:40, opacity:0, duration:1, ease:'expo.out'}, 0);
-  intro.from(titleBottom, {y:-40, opacity:0, duration:1, ease:'expo.out'}, .1);
-  intro.from(card, {scale:.7, opacity:0, duration:1.1, ease:'power3.out'}, .2);
-
-  gsap.set(card, {transformOrigin:'50% 50%'});
-
-  function immerseScale(){
-    const vw = innerWidth, vh = innerHeight;
-    const cardW = Math.min(vw * 0.86, 420);
-    const cardH = cardW * 10/16;
-    return Math.max(vw/cardW, vh/cardH) * 1.08;
-  }
-
-  // Master scroll-triggered timeline
-  const tl = gsap.timeline({
-    scrollTrigger:{
-      trigger: hero,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: .4,
-      invalidateOnRefresh: true,
-      onUpdate(self){
-        const p = self.progress;
-        // X-ray reveal happens between p 0.20 and 0.72
-        const xRange = gsap.utils.clamp(0, 1, (p - 0.20) / 0.52);
-
-        // Outer (car body) fades out, becoming "transparent"
-        layerOuter.style.opacity = 1 - xRange * 0.95;
-        layerOuter.style.filter  = `blur(${xRange * 3}px) saturate(${1 - xRange * 0.4})`;
-
-        // Inner (engine bay / parts) fades in
-        layerInner.style.opacity = xRange;
-        layerInner.style.transform = `scale(${1 + xRange * 0.08})`;
-
-        // X-ray overlay + crosshair appear at the midpoint
-        xray.style.opacity  = Math.sin(xRange * Math.PI) * 0.9;     // peaks at mid
-        cross.style.opacity = Math.max(0, (xRange - 0.3) / 0.7) * 0.8;
-
-        // Scanline glides inside the card during the reveal
-        if (xRange > 0 && xRange < 1){
-          scanline.style.opacity = 1;
-          scanline.style.top = (xRange * 100) + '%';
-        } else {
-          scanline.style.opacity = 0;
-        }
-
-        // Label updates
-        if (xRange < 0.15) cardLabel.textContent = 'The Car';
-        else if (xRange < 0.55) cardLabel.textContent = 'Diagnostic Mode';
-        else if (xRange < 0.95) cardLabel.textContent = 'Under the Hood';
-        else cardLabel.textContent = 'Ready to Fix';
-
-        // Full-screen scan beam
-        if (p > 0.18 && p < 0.78){
-          beam.style.opacity = 1;
-          beam.style.top = (((p - 0.18) / 0.6) * 100) + '%';
-        } else {
-          beam.style.opacity = 0;
-        }
-      }
-    }
-  });
-
-  // Phase A (0 → 0.18): card grows to full natural size, titles slightly spread
-  tl.to(card, {scale: 1, ease:'power2.out', duration:.18}, 0);
-  tl.to(titleTop, {x:'-8vw', ease:'power2.inOut', duration:.18}, 0);
-  tl.to(titleBottom, {x:'8vw', ease:'power2.inOut', duration:.18}, 0);
-
-  // Phase B (0.18 → 0.78): card immerses to fullscreen, titles slide off
-  tl.to(card, {scale: () => immerseScale(), ease:'power2.in', duration:.6}, .18);
-  tl.to(titleTop, {x: () => innerWidth < 768 ? '-90vw' : '-70vw', opacity:0, ease:'power2.in', duration:.35}, .18);
-  tl.to(titleBottom, {x: () => innerWidth < 768 ? '90vw' : '70vw', opacity:0, ease:'power2.in', duration:.35}, .18);
-
-  // Phase C (0.78 → 1): card shrinks + fades, transition to menu
-  tl.to(card, {scale:.4, opacity:0, ease:'power2.inOut', duration:.22}, .78);
-
-  // Refresh on load
-  window.addEventListener('load', () => ScrollTrigger.refresh());
-
-  // Ripple on buttons
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', e => {
       const r = btn.getBoundingClientRect();
@@ -484,7 +220,6 @@
       setTimeout(() => ripple.remove(), 700);
     });
   });
-})();
 </script>
 
 </body>
